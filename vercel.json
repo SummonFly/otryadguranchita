@@ -20,5 +20,7 @@
             "src": "/(.*)",
             "dest": "SVO/wsgi.py"
         }
-    ]
+    ],
+  "buildCommand": "python manage.py collectstatic --noinput",
+  "outputDirectory": "staticfiles"
 }
