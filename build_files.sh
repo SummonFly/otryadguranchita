@@ -1,15 +1,29 @@
-echo "BUILD START"
+#!/bin/bash
 
-# create a virtual environment named 'venv' if it doesn't already exist
-python3.12 -m venv venv
+echo "=== BUILD START ==="
 
-# activate the virtual environment
-source venv/bin/activate
-
-# install all deps in the venv
+# Установка зависимостей
+echo "Installing dependencies..."
 pip install -r requirements.txt
 
-# collect static files using the Python interpreter from venv
-python manage.py collectstatic --noinput
+# Сбор статики
+echo "Collecting static files..."
+python manage.py collectstatic --noinput --clear
 
-echo "BUILD END"
+# Проверка собранных файлов
+echo "=== Checking static files ==="
+if [ -d "staticfiles" ]; then
+    echo "staticfiles directory exists with:"
+    find staticfiles -type f | head -20
+    echo "Total files in staticfiles: $(find staticfiles -type f | wc -l)"
+
+    # Проверка конкретных файлов
+    echo ""
+    echo "Looking for specific files:"
+    [ -f "staticfiles/style.css" ] && echo "✓ style.css found" || echo "✗ style.css NOT found"
+    [ -f "staticfiles/images/logo.png" ] && echo "✓ logo.png found" || echo "✗ logo.png NOT found"
+else
+    echo "ERROR: staticfiles directory NOT created!"
+fi
+
+echo "=== BUILD END ==="
