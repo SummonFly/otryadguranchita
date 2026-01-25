@@ -7,3 +7,4 @@ application = get_wsgi_application()
 
 from django.conf import settings
 application = WhiteNoise(application, root=settings.STATIC_ROOT)
+app = application
