@@ -2,17 +2,17 @@
   "builds": [
     {
       "src": "SVO/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "15mb",
-        "runtime": "python3.10"
-      }
+      "use": "@vercel/python"
+    },
+    {
+      "src": "otryadguranchita/static/**",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1"
+      "dest": "otryadguranchita/static/$1"
     },
     {
       "src": "/(.*)",
