@@ -5,14 +5,14 @@
       "use": "@vercel/python"
     },
     {
-      "src": "otryadguranchita/static/**",
+      "src": "SVO/static/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "otryadguranchita/static/$1"
+      "dest": "SVO/static/$1"
     },
     {
       "src": "/(.*)",
