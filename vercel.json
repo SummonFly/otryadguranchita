@@ -3,22 +3,12 @@
     {
       "src": "SVO/wsgi.py",
       "use": "@vercel/python"
-    },
-    {
-      "src": "SVO/static/**",
-      "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "SVO/static/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "SVO/wsgi.py"
     }
-  ],
-  "buildCommand": "chmod +x build_files.sh && ./build_files.sh",
-  "outputDirectory": ""
+  ]
 }
